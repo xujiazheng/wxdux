@@ -4,7 +4,6 @@
 
 + [安装](#安装)
 + [引入](#引入)
-+ [使用](#使用)
 + [基础](#基础)
     + [action](#action)
     + [reducer](#reducer)
@@ -35,72 +34,6 @@ mkdir wxdux
 
 cp 克隆下来的目录/dist/* l/wxdux/
 
-```
-
-### 使用
-
-```javascript
-// 小程序主入口app.js
-import {createStore} from './common/wxdux/index';
-import reducer from './reducer';
-const store = createStore(reducer);
-
-App({
-    globalData: {
-        store,
-    },
-});
-
-// reducer.js中返回一个对象
-
-const userReducer = (state = {}, action) => {
-    switch (action.type) {
-        case 'update_name': {
-            return Object.assign({}, state, {
-                name: action.name,
-            });
-        }
-        default: {
-            return state;
-        }
-    }
-};
-
-const postsReducer = (state = [], action) => {
-    switch (action.type) {
-        case 'add_post': {
-            state.push(action.post);
-            return state;
-        }
-        default: {
-            return state;
-        }
-    }
-};
-
-export default {
-    user: userReducer,
-    posts: postsReducer,
-};
-
-// 页面中连接state home.js
-
-import {connect, dispatch} from '../../common/wxdux/index';
-
-Page(connect({
-    data: {
-        sex: '男',
-    },
-    $useState(state) {
-        return {
-            name: state.user.name,
-        },
-    },
-}));
-
-// wxml中使用
-
-<view>{{name}}</view>
 ```
 
 ### 基础
