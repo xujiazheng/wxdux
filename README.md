@@ -32,7 +32,7 @@ cd common
 
 mkdir wxdux
 
-cp 克隆下来的目录/dist/* l/wxdux/
+cp 克隆下来的目录/dist/* ./wxdux/
 
 ```
 
